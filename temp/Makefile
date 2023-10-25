@@ -1,10 +1,9 @@
-CC = cc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address
-MLXFLAGS = -framework Cocoa -framework OpenGL -framework IOKit
+CC = gcc
+CFLAGS = -Wall -Wextra #-Werror
 NAME = so_long
 
-SRCS =	./src/test.c \
-		includes/get_next_line_so/get_next_line_utils.c includes/get_next_line_so/get_next_line.c
+SRCS = ./src/test.c \
+       includes/get_next_line_so/get_next_line_utils.c includes/get_next_line_so/get_next_line.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -14,10 +13,13 @@ LIBFT_TARGET = $(LIBFT_DIR)/libft.a
 PRINTF_DIR = includes/ft_printf
 PRINTF_TARGET = $(PRINTF_DIR)/libftprintf.a
 
+MLX_DIR = includes/MLX42/build
+MLX_LIB = -L$(MLX_DIR) -lmlx42
+
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT_TARGET) $(PRINTF_TARGET)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L$(LIBFT_DIR) -lft -L$(PRINTF_DIR) -lftprintf
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX_LIB) -Iinclude -ldl -lglfw -pthread -lm -L$(LIBFT_DIR) -lft -L$(PRINTF_DIR) -lftprintf
 
 $(LIBFT_TARGET):
 	@$(MAKE) -C $(LIBFT_DIR)
