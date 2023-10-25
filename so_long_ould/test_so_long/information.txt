@@ -1,0 +1,14 @@
+mlx_init() --> make connection
+
+mlx_new_window(takes the mlx_init pointer, Breite, Höhe, "Name of window");
+
+
+
+data.addr = mlx_get_data_addr(data.img, &data.bits_per_pixel, &data.line_length, &data.endian);
+this command stores the image values, it takes the data.img and fills in the corrosponding bites_per_pixels, length of the line and the endian
+So, in summary:
+
+data.bits_per_pixel is set to the number of bits per pixel in the image.
+data.line_length is set to the number of bytes per row in the image.
+data.endian is set to the endianness of the image (byte order).
+
