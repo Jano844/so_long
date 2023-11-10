@@ -20,6 +20,14 @@ MLX_LIB = -L$(MLX_DIR) -lmlx42
 
 all: $(NAME)
 
+clone:
+	@if [ ! -d "includes/MLX42" ]; then \
+		git clone https://github.com/codam-coding-college/MLX42.git includes/MLX42; \
+	else \
+		echo "Directory includes/MLX42 already exists."; \
+	fi
+	@cd includes/MLX42 && cmake -B build && cmake --build build -j4
+
 $(NAME): $(OBJS) $(LIBFT_TARGET) $(PRINTF_TARGET)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L$(LIBFT_DIR) -lft -L$(PRINTF_DIR) -lftprintf $(MLXFLAGS) $(MLX_LIB)
 

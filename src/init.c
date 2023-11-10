@@ -6,7 +6,7 @@
 /*   By: jsanger <jsanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 22:18:35 by jsanger           #+#    #+#             */
-/*   Updated: 2023/11/10 17:54:31 by jsanger          ###   ########.fr       */
+/*   Updated: 2023/11/10 23:49:48 by jsanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ void	init_map_utils(t_Mlx_42 lib, t_images img, t_map *map, int a[2])
 void	init_map(t_Mlx_42 lib, t_images img, t_map *map)
 {
 	int		arr[2];
-	char	*temp;
 
 	arr[0] = 0;
 	arr[1] = 0;
@@ -85,7 +84,5 @@ void	init_map(t_Mlx_42 lib, t_images img, t_map *map)
 		arr[1] = 0;
 		arr[0]++;
 	}
-	temp = ft_itoa(lib.counter);
-	mlx_put_string(lib.mlx, temp, 10, 5);
-	free(temp);
+	mlx_put_string(lib.mlx, "0", 10, 5);
 }
